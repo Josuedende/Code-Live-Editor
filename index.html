@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Code Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-icon active" id="codeIcon" title="Code Editor">
+                <span class="icon">{ }</span>
+            </div>
+            <div class="sidebar-icon" id="previewIcon" title="Preview">
+                <span class="icon">👁️</span>
+            </div>
+            <div class="sidebar-icon" id="historyIcon" title="History">
+                <span class="icon">🕒</span>
+            </div>
+            <div class="sidebar-icon" id="fileIcon" title="Files">
+                <span class="icon">💾</span>
+            </div>
+        </div>
+
+        <!-- Code Panel -->
+        <div class="code-panel" id="codePanel">
+            <div class="panel-header">
+                <div class="panel-title">Code Editor</div>
+                <div class="controls">
+                    <button class="btn btn-success" id="runBtn">
+                        <span class="icon">▶️</span> Run
+                    </button>
+                </div>
+            </div>
+
+            <div class="code-actions">
+                <button class="action-btn" id="undoBtn" title="Undo">
+                    <span class="icon">↶</span> Undo
+                </button>
+                <button class="action-btn" id="redoBtn" title="Redo">
+                    <span class="icon">↷</span> Redo
+                </button>
+                <button class="action-btn" id="clearBtn" title="Clear Code">
+                    <span class="icon">🗑️</span> Clear
+                </button>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="html">
+                    <span class="icon">📄</span> HTML
+                </div>
+                <div class="tab" data-tab="css">
+                    <span class="icon">🎨</span> CSS
+                </div>
+                <div class="tab" data-tab="js">
+                    <span class="icon">⚡</span> JavaScript
+                </div>
+            </div>
+            
+            <div class="code-container active" id="html-container">
+                <textarea class="code-area" id="htmlCode" placeholder="Write your HTML code here..."></textarea>
+            </div>
+            
+            <div class="code-container" id="css-container">
+                <textarea class="code-area" id="cssCode" placeholder="Write your CSS code here..."></textarea>
+            </div>
+            
+            <div class="code-container" id="js-container">
+                <textarea class="code-area" id="jsCode" placeholder="Write your JavaScript code here..."></textarea>
+            </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel" id="previewPanel">
+            <div class="preview-header">
+                <div class="panel-title" style="color: #333;">Preview</div>
+                <div class="preview-controls">
+                    <button class="preview-btn" id="refreshPreview" title="Refresh Preview">
+                        <span class="icon">🔄</span> Refresh
+                    </button>
+                    <button class="preview-btn" id="toggleCodePanel" title="Toggle Code Panel">
+                        <span class="icon">📝</span> Code
+                    </button>
+                </div>
+            </div>
+            <iframe class="preview-area" id="preview" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+
+        <!-- History Panel -->
+        <div class="history-panel" id="historyPanel">
+            <div class="history-header">
+                <h3>Code History</h3>
+                <button class="close-history" id="closeHistory">&times;</button>
+            </div>
+            <div class="history-content" id="historyContent">
+                <div class="empty-history">No history yet. Run your code to save versions.</div>
+            </div>
+        </div>
+
+        <!-- File Panel -->
+        <div class="file-panel" id="filePanel">
+            <div class="file-header">
+                <h3>File Manager</h3>
+                <button class="close-history" id="closeFilePanel">&times;</button>
+            </div>
+            <div class="file-content">
+                <div class="file-controls">
+                    <div class="file-input-group">
+                        <label for="fileName">File Name:</label>
+                        <input type="text" id="fileName" class="file-input" placeholder="my-project.html">
+                    </div>
+                    <button class="btn btn-success" id="saveFileBtn">
+                        <span class="icon">💾</span> Save Current Code
+                    </button>
+                    <button class="btn btn-warning" id="exportFileBtn">
+                        <span class="icon">📥</span> Export as HTML File
+                    </button>
+                    <button class="btn" id="importFileBtn">
+                        <span class="icon">📤</span> Import HTML File
+                    </button>
+                    <input type="file" id="fileInput" accept=".html,.txt" style="display: none;">
+                </div>
+                <div class="file-list">
+                    <h4>Saved Files</h4>
+                    <div id="fileListContent">
+                        <!-- Files will be listed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
